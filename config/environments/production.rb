@@ -91,8 +91,9 @@ Rails.application.configure do
   # Egoridi - Setting the cable's server URI for production
   config.web_socket_server_url = "wss://message-go.herokuapp.com/cable"
   # Egoridi - Allowing request origins
-  config.action_cable.allowed_request_origins = ['https://message-go.herokuapp.com', 'http://message-go.herokuapp.com/login']
-
+  config.action_cable.allowed_request_origins = ['https://message-go.herokuapp.com', %r{http://message-go.herokuapp.com/login}]
+  config.action_cable.disable_request_forgery_protection = true
+  
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
